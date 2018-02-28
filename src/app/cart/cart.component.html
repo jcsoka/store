@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Book Store</a>
+    <button class="btn btn-secondary">Cart: {{ cartcount }}</button>
+  </div>
+</nav>
+<div class="container page">
+
+  <h2>Cart</h2>
+
+  <div class="list-group">
+    <a *ngFor="let oneId of allIds" [routerLink]="['/item/', oneId]" class="list-group-item list-group-item-action">{{ allCookies[oneId] }}</a>
+  </div>
+
+</div>

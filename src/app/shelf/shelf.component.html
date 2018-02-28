@@ -1,0 +1,31 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Book Store</a>
+    <a [routerLink]="['/cart/', '']" class="btn btn-secondary">Cart: {{ cartCount }}</a>
+  </div>
+</nav>
+<div class="container page">
+
+  <div class="m-5">
+    <form (submit)="doSearch()">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="search" name="search" class="form-control rounded-0" placeholder="enter repository name">
+        <span class="input-group-btn">
+          <input type="submit" value="Search" class="btn btn-primary input-group-btn rounded-0">
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="results != undefined" class="row">
+    <div *ngFor="let result of results.items" class="col-sm-2 m-2 card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ result.volumeInfo.imageLinks.thumbnail }}">
+      <div class="card-body">
+        <h6 class="card-title">{{ result.volumeInfo.title }}</h6>
+        <p class="card-text"><small>{{ result.volumeInfo.authors[0] }}</small></p>
+        <a [routerLink]="['/item/', result.id]" class="btn btn-primary">More details</a>
+      </div>
+    </div>
+  </div>
+
+</div>
